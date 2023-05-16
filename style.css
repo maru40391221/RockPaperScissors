@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+}
+
+.cover {
+display: grid;
+justify-content: center;
+align-items: flex-start;
+
+}
+
+.title {
+    margin-bottom: 0px;
+}
+
+.screenTwo { 
+    height: 50px;
+    margin:0px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+
+}
+
+#showComputerChoice {
+    color: crimson;
+    font-weight: bold;
+    font-size: large;
+    
+}
+
+.screenOne { 
+    height: 50px;
+    margin:0px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: lightblue;
+}
+
+#showPlayerChoice {
+    color: crimson;
+    font-weight: bold;
+    font-size: large;
+    
+}
+
+
+.content { 
+    cursor:pointer;
+    display: block;
+}
+
+.content div:hover{
+
+    background-color: lightblue;
+}
+
+
+
+.result {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#resultWindow {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.dropdown {
+    display: grid;
+}
+
+table{
+    border:1px solid black;
+  }
+
+th {
+    border:1px solid black;
+    color: crimson;
+    background-color: lightblue;
+}
+
+td {
+    border:1px solid black;
+}
