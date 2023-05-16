@@ -6,7 +6,6 @@ const playerScreen= document.querySelector("#showPlayerChoice");
 const computerScreen = document.querySelector("#showComputerChoice");
 const submit = document.querySelector("#submit");
 let resultScreen= document.querySelector("#resultWindow");
-const content = document.querySelector(".content");
 let computerSelection;
 let playerSelection;
 
@@ -21,121 +20,95 @@ scissors.innerHTML = items[2];
 submit.disabled = true;
 
 rock.addEventListener("click", () => {
-    playerScreen.innerHTML = "You picked Rock !!";
+    playerScreen.innerHTML = `You picked ${items[0]} !!`;
     submit.disabled= false;
-    return playerSelection = items[0];
-});
+    return playerSelection = items[0];});
 
 paper.addEventListener("click", () => {
-    playerScreen.innerHTML = "You picked Paper !!"
+    playerScreen.innerHTML = `You picked ${items[1]} !!`
     submit.disabled= false;
-    return playerSelection = items[1];
-});
+    return playerSelection = items[1];});
 
 
 scissors.addEventListener("click", () => {
-    playerScreen.innerHTML = "You picked Scissors!!"
+    playerScreen.innerHTML = `You picked ${items[2]} !!`
     submit.disabled= false;
-    return playerSelection = items[2];
-});
+    return playerSelection = items[2];});
 
 submit.addEventListener("click", ()=> {
-    playRound();
-    return;
-});
-
+    getComputerChoice();
+    playRound(computerSelection, playerSelection);
+    return;});
 
 function getComputerChoice (){
-    return computerSelection = items[Math.floor (Math.random()* items.length)];
+        return computerSelection = items[Math.floor (Math.random()* items.length)];}
+
+function playRound(computer, player) {
+    //computerSelection = getComputerChoice();
+    computerScreen.innerHTML = `Computer picked ${computer}`;
+    console.log(`${player} player`)
+    console.log(`${computer} computer`)
+
+    if (computer == "Scissors" && player =="Rock") {
+        resultScreen.innerHTML = "You won";
+        appendScore(0, 1);
+    } else if (computer == "Scissors" && player =="Scissors"){
+        resultScreen.innerHTML = "Try again";
+    } else if (computer == "Scissors" && player =="Paper"){
+        resultScreen.innerHTML = "You lost";
+        appendScore(1, 0);
+    } else if (computer == "Rock" && player =="Rock") {
+        resultScreen.innerHTML = "Try again";
+    }else if (computer == "Rock" && player =="Scissors") {
+        resultScreen.innerHTML = "You lost";
+        appendScore(1, 0);
+    }else if (computer == "Rock" && player =="Paper") {
+        resultScreen.innerHTML = "You won";
+        appendScore(0, 1);
+    } else if (computer == "Paper" && player =="Paper") {
+        resultScreen.innerHTML = "Try again";
+    } else if (computer == "Paper" && player =="Scissors") {
+        resultScreen.innerHTML = "You won";
+        appendScore(0, 1);
+    } else if (computer == "Paper" && player =="Rock") {
+        resultScreen.innerHTML = "You lost";
+        appendScore(1, 0);
+    } 
 }
 
+let totalComputerScore = 0
+let totalPlayerScore  = 0
 
-function playRound() {
-    computerSelection = getComputerChoice();
-    computerScreen.innerHTML = "Computer picked "+ computerSelection;
+function appendScore (computerScore, playerScore){
+    console.log(`${computerScore} append`);
+    console.log(`${playerScore} append`);
 
-    if (computerSelection == items[1] && playerSelection == items[0]){
-        resultScreen.innerHTML = "Take the L";
-        cScore.innerHTML++;
-        playerScreen.innerHTML = "Your choice..";
-        computerScreen.innerHTML = "Computer choice.."
-        submit.innerHTML = "Play!!";
-        resultScreen.innerHTML ="";
+    totalComputerScore += computerScore;
+    totalPlayerScore += playerScore;
 
-    } else if (computerSelection == items[0] && playerSelection == items[0]) {
-        resultScreen.innerHTML = "Play again";
+    cScore.innerHTML = `${totalComputerScore}`
+    pScore.innerHTML = `${totalPlayerScore}`
 
-    } else if (computerSelection == items[2]&& playerSelection == items[0]){
-        resultScreen.innerHTML = "Good Job Champ";
-        pScore.innerHTML++;
-        playerScreen.innerHTML = "Your choice..";
-        computerScreen.innerHTML = "Computer choice..";
-        resultScreen.innerHTML ="";
-        submit.innerHTML = "Play!!";
-
-    }
-
-    if (computerSelection == items[1] && playerSelection == items[1]){
-        resultScreen.innerHTML = "Play again";
-    } else if (computerSelection == items[0] && playerSelection == items[1]) {
-        resultScreen.innerHTML = "Good Job Champ";
-        pScore.innerHTML++;
-        playerScreen.innerHTML = "Your choice..";
-        computerScreen.innerHTML = "Computer choice..";
-        resultScreen.innerHTML ="";
-        submit.innerHTML = "Play!!";
-    } else if (computerSelection == items[2]&& playerSelection == items[1]){
-        resultScreen.innerHTML = "Take the L";
-        cScore.innerHTML++;
-        playerScreen.innerHTML = "Your choice..";
-        computerScreen.innerHTML = "Computer choice.."
-        submit.innerHTML = "Play!!";
-        resultScreen.innerHTML ="";
-    }
-
-    if (computerSelection == items[1] && playerSelection == items[2]){
-        resultScreen.innerHTML = "Good Job Champ";
-        pScore.innerHTML++;
-        playerScreen.innerHTML = "Your choice..";
-        computerScreen.innerHTML = "Computer choice..";
-        resultScreen.innerHTML ="";
-        submit.innerHTML = "Play!!";
-    } else if (computerSelection == items[0] && playerSelection == items[2]) {
-        resultScreen.innerHTML = "Take the L";
-        cScore.innerHTML++;
-        playerScreen.innerHTML = "Your choice..";
-        computerScreen.innerHTML = "Computer choice.."
-        submit.innerHTML = "Play!!";
-        resultScreen.innerHTML ="";
-    } else if (computerSelection == items[2]&& playerSelection == items[2]){
-        resultScreen.innerHTML = "Play again";
-    }
-
-    submit.innerHTML = "Click here to Play Again";
-
-/*
-    submit.addEventListener("click", score);
-
-    if (content.style.display === "none") {
-        content.style.display = "block";
-      } else {
-        content.style.display = "none";
-      }
-*/
+    if (totalPlayerScore == 5){
+        resultScreen.style.color = "red"
+        resultScreen.innerHTML = "Good Job You won 5 times!!";
+        totalPlayerScore  = 0
+        totalComputerScore = 0
+        cScore.innerHTML = `0`
+        pScore.innerHTML = `0`
+        submit.addEventListener("click", ()=> {
+            location.reload();
+            return;});
+    } else if (totalComputerScore == 5) {
+        resultScreen.style.color = "red"
+        resultScreen.innerHTML = "Restart...";
+        totalPlayerScore  = 0
+        totalComputerScore = 0
+        cScore.innerHTML = `0`
+        pScore.innerHTML = `0`
+        submit.addEventListener("click", ()=> {
+            location.reload();
+            return;});
+    } 
 
 }
-
-
-/*
-if (pScore.innerHTML == 5) {
-    submit.addEventListener("click", refresh);
-}
-*/
-
-
-
-function refresh (){
-    location.reload();
-}
-
-
