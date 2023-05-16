@@ -1,17 +1,17 @@
 const items = ["Rock", "Paper", "Scissors"];
-const rock = document.getElementById("rock");
-const paper = document.getElementById("paper");
-const scissors = document.getElementById("scissors");
-const playerScreen= document.getElementById("showPlayerChoice");
-const computerScreen = document.getElementById("showComputerChoice");
-const submit = document.getElementById("submit");
-let resultScreen= document.getElementById("resultWindow");
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const playerScreen= document.querySelector("#showPlayerChoice");
+const computerScreen = document.querySelector("#showComputerChoice");
+const submit = document.querySelector("#submit");
+let resultScreen= document.querySelector("#resultWindow");
 const content = document.querySelector(".content");
 let computerSelection;
 let playerSelection;
 
-let pScore= document.getElementById("playerScore");
-let cScore= document.getElementById("computerScore");
+let pScore= document.querySelector("#playerScore");
+let cScore= document.querySelector("#computerScore");
 
 
 rock.innerHTML = items[0];
