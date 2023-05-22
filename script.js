@@ -5,6 +5,7 @@ const scissors = document.querySelector("#scissors");
 const playerScreen= document.querySelector("#showPlayerChoice");
 const computerScreen = document.querySelector("#showComputerChoice");
 const submit = document.querySelector("#submit");
+const body = document.querySelector("body")
 let resultScreen= document.querySelector("#resultWindow");
 let computerSelection;
 let playerSelection;
@@ -92,6 +93,8 @@ function appendScore (computerScore, playerScore){
     if (totalPlayerScore == 5){
         resultScreen.style.color = "red"
         resultScreen.innerHTML = "Good Job You won 5 times!!";
+        body.style.backgroundImage = "url('https://media.giphy.com/media/ZkMVgxu28zm01v16Rd/giphy.gif')";
+        body.style.backgroundSize="cover";
         totalPlayerScore  = 0
         totalComputerScore = 0
         cScore.innerHTML = `0`
@@ -102,6 +105,8 @@ function appendScore (computerScore, playerScore){
     } else if (totalComputerScore == 5) {
         resultScreen.style.color = "red"
         resultScreen.innerHTML = "Restart...";
+        body.style.backgroundImage = "url('https://media.giphy.com/media/jWcypagX0tNtiup1pg/giphy.gif')";
+        body.style.backgroundSize="cover";
         totalPlayerScore  = 0
         totalComputerScore = 0
         cScore.innerHTML = `0`

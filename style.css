@@ -2,6 +2,12 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url("https://media.giphy.com/media/VxbvpfaTTo3le/giphy.gif");
+    background-size: cover;
+
+}
+
 .cover {
 display: grid;
 justify-content: center;
