@@ -6,6 +6,7 @@ const playerScreen= document.querySelector("#showPlayerChoice");
 const computerScreen = document.querySelector("#showComputerChoice");
 const submit = document.querySelector("#submit");
 const body = document.querySelector("body")
+const imgs = document.querySelectorAll("img")
 let resultScreen= document.querySelector("#resultWindow");
 let computerSelection;
 let playerSelection;
@@ -13,33 +14,46 @@ let playerSelection;
 let pScore= document.querySelector("#playerScore");
 let cScore= document.querySelector("#computerScore");
 
-
+/*
 rock.innerHTML = items[0];
 paper.innerHTML = items[1];
 scissors.innerHTML = items[2];
+*/
 
 submit.disabled = true;
+
+imgs.forEach(img => addEventListener("transitionend", removeTransition));
 
 rock.addEventListener("click", () => {
     playerScreen.innerHTML = `You picked ${items[0]} !!`;
     submit.disabled= false;
+    rock.classList.add("picked")
     return playerSelection = items[0];});
 
 paper.addEventListener("click", () => {
     playerScreen.innerHTML = `You picked ${items[1]} !!`
     submit.disabled= false;
+    paper.classList.add("picked")
     return playerSelection = items[1];});
 
 
 scissors.addEventListener("click", () => {
     playerScreen.innerHTML = `You picked ${items[2]} !!`
     submit.disabled= false;
+    scissors.classList.add("picked")
     return playerSelection = items[2];});
 
 submit.addEventListener("click", ()=> {
     getComputerChoice();
     playRound(computerSelection, playerSelection);
     return;});
+
+
+function removeTransition (img){
+    console.log(img)
+}
+
+
 
 function getComputerChoice (){
         return computerSelection = items[Math.floor (Math.random()* items.length)];}
@@ -117,3 +131,5 @@ function appendScore (computerScore, playerScore){
     } 
 
 }
+
+

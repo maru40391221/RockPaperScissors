@@ -8,6 +8,16 @@ body {
 
 }
 
+img {
+    width: 200px;
+    height: 200px;
+    margin: 0 25px;
+    transition: all 0.4s ease;
+}
+
+.picked {
+}
+
 .cover {
 display: grid;
 justify-content: center;
@@ -15,8 +25,18 @@ align-items: flex-start;
 
 }
 
-.title {
+[data-title = "1" ] {
     margin-bottom: 0px;
+    font-family: 'Bradley Hand', sans-serif;
+    font-size: 80px;
+}
+
+[data-title = "2" ] {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: 'Bradley Hand', sans-serif;
+    font-size: 50px;
+    text-align: center;
 }
 
 .screenTwo { 
@@ -55,12 +75,13 @@ align-items: flex-start;
 
 .content { 
     cursor:pointer;
-    display: block;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .content div:hover{
-
-    background-color: lightblue;
+    transform: scale(1.1);
 }
 
 
